@@ -73,18 +73,46 @@ This command finishes in 8 minutes on the same machine. For faster evaluation, y
 
 Requirements
 ------------
-* numpy
-* scipy
-
-(may have to be independently installed) 
-or `pip install -r requirements.txt` to install all dependencies
-
+* Python 3.8+
+* numpy>=1.19.0,<3.0.0 (supports both NumPy 1.x and 2.x)
+* scipy>=1.6.0
+* gensim>=4.0.0
+* networkx>=2.5
+* psutil>=5.0.0
 
 Installation
 ------------
-1. `cd deepwalk`
-2. `pip install -r requirements.txt`
-3. `python setup.py install`
+
+**Using uv (recommended)**::
+
+    uv pip install deepwalk
+
+**Using pip**::
+
+    pip install deepwalk
+
+**From source with uv**::
+
+    git clone https://github.com/phanein/deepwalk.git
+    cd deepwalk
+    uv venv
+    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+    uv pip install -e .
+
+**From source with pip**::
+
+    git clone https://github.com/phanein/deepwalk.git
+    cd deepwalk
+    pip install -e .
+
+**Development installation**::
+
+    git clone https://github.com/phanein/deepwalk.git
+    cd deepwalk
+    uv venv
+    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+    uv pip install -e .
+    uv pip install -r requirements-dev.txt
 
 
 Citing

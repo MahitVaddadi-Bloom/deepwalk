@@ -11,10 +11,16 @@ from time import time
 from glob import glob
 from six.moves import range, zip, zip_longest
 from six import iterkeys
-from collections import defaultdict, Iterable
+from collections import defaultdict
+try:
+    # Python 3.3+
+    from collections.abc import Iterable
+except ImportError:
+    # Python < 3.3
+    from collections import Iterable
 import random
 from random import shuffle
-from itertools import product,permutations
+from itertools import product, permutations
 from scipy.io import loadmat
 from scipy.sparse import issparse
 
@@ -35,9 +41,11 @@ class Graph(defaultdict):
     return self.keys()
 
   def adjacency_iter(self):
-    return self.iteritems()
+    return self.items()
 
-  def subgraph(self, nodes={}):
+  def subgraph(self, nodes=None):
+    if nodes is None:
+      nodes = {}
     subgraph = Graph()
     
     for n in nodes:
